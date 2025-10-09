@@ -74,7 +74,7 @@ public class ZonaFitForma extends JFrame{
         var clientes = this.clienteServicio.listarClientes();
         clientes.forEach(cliente -> {
             Object[] renglonCliente = {
-                    cliente.getId(),
+                    cliente.getClienteID(),
                     cliente.getNombre(),
                     cliente.getApellido(),
                     cliente.getMembresia()
@@ -128,7 +128,7 @@ public class ZonaFitForma extends JFrame{
             var idClienteStr = clientesTabla.getModel().getValueAt(renglon,0).toString();
             this.idCliente = Integer.parseInt(idClienteStr);
             var cliente = new Cliente();
-            cliente.setId(this.idCliente);
+            cliente.setClienteID(this.idCliente);
             clienteServicio.eliminarCliente(cliente);
             mostrarMensaje("Cliente con id " + this.idCliente + " eliminado");
             limpiarFormulario();
