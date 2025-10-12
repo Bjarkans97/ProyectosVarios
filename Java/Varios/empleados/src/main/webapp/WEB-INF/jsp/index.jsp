@@ -30,10 +30,19 @@
                                           value="${empleado.sueldo}"/>
                     </td>
                     <td class="text-center">
-                        <c:url var="urlEditar" value="/editar">
-                            <c:param name="idEmpleado" value="${empleado.idEmpleado}"/>
-                        </c:url>
-                        <a href="${urlEditar}" class="btn btn-warning btn-sm">Editar</a>
+                        <c:set var="urlEditar">
+                            <c:url value="${application.contextPath}/editar">
+                                <c:param name="idEmpleado" value="${empleado.idEmpleado}"/>
+                            </c:url>
+                        </c:set>
+                        <a href="${urlEditar}" class="btn btn-warning btn-sm me-3">Editar</a>
+
+                        <c:set var="urlEliminar">
+                            <c:url value="${application.contextPath}/eliminar">
+                                <c:param name="idEmpleado" value="${empleado.idEmpleado}"/>
+                            </c:url>
+                        </c:set>
+                        <a href="${urlEliminar}" class="btn btn-danger btn-sm me-3">Eliminar</a>
                     </td>
                 </tr>
             </c:forEach>
