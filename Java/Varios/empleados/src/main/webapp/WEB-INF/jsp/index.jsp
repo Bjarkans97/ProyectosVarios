@@ -1,12 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Sistema de empleados</title>
-</head>
-<body>
-    <div>
+<%@ include file="comunes/cabecero.jsp"%>
+<%@ include file="comunes/navegacion.jsp"%>
+
+<div class="container">
+    <div class="text-center" style="margin: 30px">
         <h1>Sistema de empleados</h1>
     </div>
-</body>
-</html>
+
+    <div class="container">
+        <table class="table table-striped table-hover table-bordered align-middle" >
+            <thead class="table-dark text-center">
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Departamento</th>
+                <th scope="col">Sueldo</th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <c:forEach var="empleado" items="${empleados}">
+                <tr>
+                    <th scope="row">${empleado.idEmpleado}</th>
+                    <td>${empleado.nombre}</td>
+                    <td>${empleado.departamento}</td>
+                    <td>
+                        <fmt:setLocale value="es_CL"/>
+                        <fmt:formatNumber type="currency" currencySymbol="$"
+                                          groupingUsed="true" maxFractionDigits="0"
+                                          value="${empleado.sueldo}"/>
+                    </td>
+                    <td class="text-center">
+                        <c:url var="urlEditar" value="/editar">
+                            <c:param name="idEmpleado" value="${empleado.idEmpleado}"/>
+                        </c:url>
+                        <a href="${urlEditar}" class="btn btn-warning btn-sm">Editar</a>
+                    </td>
+                </tr>
+            </c:forEach>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<%@ include file="comunes/footter.jsp"%>
