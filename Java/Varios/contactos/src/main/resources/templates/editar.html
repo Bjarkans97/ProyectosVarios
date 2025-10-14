@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragmentos/cabecero::cabecero-seccion(titulo='Editar Contacto')}">
+</head>
+
+<body>
+<div th:replace="~{fragmentos/navegacion::navegacion}"></div>
+
+<div class="container">
+    <div class="container text-center" style="margin: 30px">
+        <h3>Editar contacto</h3>
+    </div>
+</div>
+
+<div class="container">
+
+    <form action="/editar" th:object="${contacto}" method="post">
+        <input type="hidden" th:field="*{idContacto}"/>
+        <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre Contacto</label>
+            <input type="text" class="form-control" id="nombre" name="nombre" th:field="*{nombre}" required="true">
+        </div>
+        <div class="mb-3">
+            <label for="celular" class="form-label">Celular Contacto</label>
+            <input type="text" class="form-control" id="celular" name="celular" th:field="*{celular}">
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">E-mail Contacto</label>
+            <input type="text" class="form-control" id="email" name="email" th:field="*{email}">
+        </div>
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary btn-sm me-3">Editar</button>
+            <a href="/" class="btn btn-danger btn-sm me-3">Cancelar</a>
+        </div>
+    </form>
+</div>
+
+<div th:replace="~{fragmentos/pie-pagina::pie-pagina-seccion}"></div>
+</body>
+</html>
